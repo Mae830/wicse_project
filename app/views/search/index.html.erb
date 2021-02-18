@@ -1,2 +1,11 @@
-<h1>Search#index</h1>
+<h1>Search</h1>
+<ul>
+  <% @locations.each do |location| %>
+    <li>
+      <a href="/search/<%=location.id %>">
+        <%= location.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
 <p>Find me in app/views/search/index.html.erb</p>

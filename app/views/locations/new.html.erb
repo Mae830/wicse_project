@@ -1,0 +1,52 @@
+<h1>Know a good spot? Tell us about it!</h1>
+
+<%= form_with model: @location do |form| %>
+  <div>
+    <%= form.label "Name" %><br>
+    <%= form.text_field :name %>
+    <% @location.errors.full_messages_for(:name).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.label "Street 1"%><br>
+    <%= form.text_area :street1 %>
+    <% @location.errors.full_messages_for(:street1).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.label "Street 2"%><br>
+    <%= form.text_area :street2%>
+  </div>
+
+  <div>
+    <%= form.label "City"%><br>
+    <%= form.text_area :city%>
+    <% @location.errors.full_messages_for(:city).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.label "State"%><br>
+    <%= form.text_area :state %>
+    <% @location.errors.full_messages_for(:state).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.label "Zip"%><br>
+    <%= form.text_area :zip%>
+    <% @location.errors.full_messages_for(:zip).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

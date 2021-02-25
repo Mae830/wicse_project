@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root to: "locations#index"
   resources :locations
   get "/favorites", to:"favorites#index"
+  post "/favorites/:location_id", to:"favorites#create"
 
 end

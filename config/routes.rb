@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :locations
   get "/favorites", to:"favorites#index"
   post "/favorites/:location_id", to:"favorites#create"
-
+  delete "/favorites/:favorite_id", to:"favorites#destroy"
+  
 end

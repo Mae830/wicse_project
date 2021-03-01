@@ -7,9 +7,17 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(user_id: current_user.id, location_id: @location.id)
 
     if @favorite.save
+      #flash message
       
     else
-      redirect_to location_path(@location)
+     
     end
+    redirect_to location_path(@location)
+  end
+  def destroy
+    favorite = Favorite.find(params[:favorite_id])
+    location = favorite.location
+    favorite.destroy
+    redirect_to location_path(location)
   end
 end

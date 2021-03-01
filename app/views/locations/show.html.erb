@@ -2,9 +2,16 @@
 <h2><%= @location.street1 + ", " + @location.city + ", " + @location.state + " " + @location.zip %></h2>
 <% if user_signed_in? %>
     <div>
-        <header>Would you like to add this location to your favorites?</header>
-        <%= link_to "/favorites/#{@location.id}", method: "post" do %>
-            <button>yes</button>
+        <% if @favorite == nil %>
+            <header>Would you like to add this location to your favorites?</header>
+            <%= link_to "/favorites/#{@location.id}", method: "post" do %>
+                <button>yes</button>
+            <% end %>
+        <% else %>  
+            <header>Remove this location from favorites</header>
+            <%= link_to "/favorites/#{@favorite.id}", method: "delete" do %>
+                <button>delete</button>
+            <% end %>
         <% end %>
     </div>
 <% end %>

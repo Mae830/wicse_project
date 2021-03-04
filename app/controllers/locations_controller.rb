@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :delete]
     def index
       @locations = Location.all
     end
@@ -16,6 +17,12 @@ class LocationsController < ApplicationController
       else
         render :new
       end
+    end
+    def destroy
+      @location = Location.find(params[:id])
+      @location.destroy
+      flash[:alert] = "This location has been deleted."
+      redirect_to locations_path
     end
   
     private

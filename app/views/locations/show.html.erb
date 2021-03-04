@@ -2,6 +2,16 @@
 <h2><%= @location.street1 + ", " + @location.city + ", " + @location.state + " " + @location.zip %></h2>
 <% if user_signed_in? %>
     <div>
+        <% @location.user_id %>
+        <% if @location.user_id == current_user.id %>
+            <header>Would you like to delete this location.</header>
+            <%= link_to location_path(@location), method: "delete" do %>
+                <button>delete</button>
+            <% end %>
+        <% else %>
+        <% end %>
+    </div>
+    <div>
         <% if @favorite == nil %>
             <header>Would you like to add this location to your favorites?</header>
             <%= link_to "/favorites/#{@location.id}", method: "post" do %>

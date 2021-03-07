@@ -5,13 +5,16 @@ class LocationsController < ApplicationController
     end
     def show
       @location = Location.find(params[:id])
-      @favorite = Favorite.where(user_id: current_user.id, location_id: @location.id).take
+      if user_signed_in?
+        @favorite = Favorite.where(user_id: current_user.id, location_id: @location.id).take
+      end
     end
     def new
       @location = Location.new
     end
     def create
       @location = Location.new(location_params)
+      @user = @location.build_user(id: current_user.id)
       if @location.save
         redirect_to @location
       else

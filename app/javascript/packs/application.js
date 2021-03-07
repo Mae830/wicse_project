@@ -11,3 +11,6 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// List of Dependencies
+require("jquery")

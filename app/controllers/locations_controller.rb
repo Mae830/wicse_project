@@ -13,8 +13,6 @@ class LocationsController < ApplicationController
       @location = Location.new
     end
     def create
-      #@location = Location.new(location_params)
-      #@user = @location.build_user(id: current_user.id)
       @location = current_user.locations.build(location_params)
       if @location.save
         redirect_to @location

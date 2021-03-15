@@ -4,7 +4,7 @@
     <div>
         <% @location.user_id %>
         <% if @location.user_id == current_user.id %>
-            <header>Would you like to delete this location.</header>
+            <header>Would you like to delete this location?</header>
             <%= link_to location_path(@location), method: "delete" do %>
                 <button>delete</button>
             <% end %>

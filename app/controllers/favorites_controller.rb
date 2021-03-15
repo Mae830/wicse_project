@@ -1,6 +1,9 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
   def index
+    if user_signed_in?
+      @favorites = current_user.favorites
+    end
   end
   def create
     @location = Location.find(params[:location_id])

@@ -1,6 +1,12 @@
 <h1>Favorites#index</h1>
-<% if user_signed_in? %>
-    
-<% end %>
+<ul>
+  <% @favorites.each do |favorite| %>
+    <li>
+      <a href="/locations/<%=favorite.location_id %>">
+        <%= favorite.location.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
 
 <p>Find me in app/views/favorites/index.html.erb</p>

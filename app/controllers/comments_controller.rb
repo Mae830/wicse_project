@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
         @comment = @location.comments.build(comment_params)
         @comment.user_id = current_user.id
         @comment.save
+        redirect_to @location
     end
 
     private

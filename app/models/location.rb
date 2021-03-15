@@ -3,7 +3,7 @@ class Location < ApplicationRecord
     belongs_to :user
     has_many :comments
 
-    #Location.group(:category).("restaurant", "dessert", "group", "nature", "park", "fun", "arcade", "datenight", "adventure", "karaoke", "family", "movie")
+    #enum category: [ :restaurant, :dessert, :group, :nature, :park, :fun, :arcade, :datenight, :adventure, :karaoke, :family, :movie]
 
     validates :name, presence: true
     validates :street1, presence: true

@@ -24,4 +24,27 @@
             <% end %>
         <% end %>
     </div>
+    <%= form_with model: [ @location, @location.comments.build ] do |form| %>
+        <p>
+          <%= form.label :comments %><br>
+          <%= form.text_area :body %>
+        </p>
+        <p>
+          <%= form.submit %>
+        </p>
+      <% end %>
+<% end %>
+<h2>Comments</h2>
+<% @location.comments.each do |comment| %>
+    <% if comment.user %>
+    <p>
+        <strong>Commenter:</strong>
+        <%= comment.user.name%>
+    </p>
+
+    <p>
+        <strong>Comment:</strong>
+        <%= comment.body %>
+    </p>
+    <% end %>
 <% end %>

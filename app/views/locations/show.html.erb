@@ -8,6 +8,10 @@
             <%= link_to location_path(@location), method: "delete" do %>
                 <button>delete</button>
             <% end %>
+            <header>Would you like to edit this location?</header>
+            <%= link_to edit_location_path(@location), method: "get" do %>
+                <button>edit</button>
+            <% end %>
         <% else %>
         <% end %>
     </div>

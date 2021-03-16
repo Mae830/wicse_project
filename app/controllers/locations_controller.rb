@@ -26,9 +26,21 @@ class LocationsController < ApplicationController
       flash[:alert] = "This location has been deleted."
       redirect_to locations_path
     end
+    def edit
+      @location = Location.find(params[:id])
+    end 
+    def update
+      @location = Location.find(params[:id])
+
+      if @location.update(location_params)
+        redirect_to @location
+      else
+        render :edit
+      end
+    end
   
     private
     def location_params
-        params.require(:location).permit(:name, :street1, :street2, :city, :state, :zip)
+        params.require(:location).permit(:name, :street1, :street2, :city, :state, :zip, :categories)
     end
 end

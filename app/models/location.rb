@@ -10,5 +10,5 @@ class Location < ApplicationRecord
     validates :city, presence: true
     validates :state, presence: true
     validates :zip, presence: true
-    validates :categories, presence: true
+    #validates :categories, presence: true
 end

@@ -1,5 +1,9 @@
 <h1><%= @location.name %></h1>
 <h2><%= @location.street1 + ", " + @location.city + ", " + @location.state + " " + @location.zip %></h2>
+<% @location.categories.each do |c| %>
+<h3><%= c.capitalize %></h3>
+<% end %>
+
 <% if user_signed_in? %>
     <div>
         <% @location.user_id %>
@@ -43,9 +47,11 @@
         <strong>Comment:</strong>
         <%= comment.body %>
     </p>
-        <% if current_user.id == comment.user_id %>
-            <%= link_to "/locations/#{@location.user_id}/comments/#{comment.id}", method: "delete" do %>
-              <button>delete</button>
+        <% if user_signed_in? %>
+            <% if current_user.id == comment.user_id %>
+                <%= link_to "/locations/#{@location.user_id}/comments/#{comment.id}", method: "delete" do %>
+                <button>delete</button>
+                <% end %>
             <% end %>
         <% end %>
     <% end %>

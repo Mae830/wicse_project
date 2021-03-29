@@ -2,6 +2,23 @@ class LocationsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :delete]
     def index
       @locations = Location.all
+      @cat_true = false;
+
+      if params.dig(:location, :categories) != nil && params[:location][:categories] 
+        query_string = []
+        @cat_checked = params[:location][:categories].reject(&:blank?)
+        @cat_checked.each do |cat|
+          query_string << "'#{cat}'=ANY(categories)"
+        end
+        query_string.join(" AND ")
+        @locations = @locations.where(query_string)
+        @cat_true = true
+      end
+
+      if params[:search_by_name] && params[:search_by_name] != ""
+        @locations = @locations.where(name: "#{params[:search_by_name]}")
+        @cat_true = false
+      end
     end
     def show
       @location = Location.find(params[:id])

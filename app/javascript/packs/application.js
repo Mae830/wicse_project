@@ -14,3 +14,4 @@ ActiveStorage.start()
 
 // List of Dependencies
 require("jquery")
+

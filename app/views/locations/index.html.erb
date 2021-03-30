@@ -5,10 +5,13 @@
 
 <div id="cats">
   <%= form_tag "/locations", method: "GET" do %>
-    <%= collection_check_boxes(:location, :categories, Location::CATEGORIES, :last, :first )%>
-    <% @cat_checked.reject(&:blank?).each do |c|%>
-      <%= check_box_tag "c", value, true %>
-    <% end %>
+    <%= collection_check_boxes(:location, :categories, Location::CATEGORIES, :last, :first ) do |b| %>
+      <% if @cat_checked != nil && @cat_checked.include?(b.value) %>
+        <%= b.label { b.check_box(checked: true) + b.text } %>
+      <% else %>
+        <%= b.label { b.check_box(checked: false) + b.text } %>
+      <% end %>
+    <% end%>
     <%= submit_tag "Search" %>
   <% end %>
 </div>

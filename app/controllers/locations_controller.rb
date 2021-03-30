@@ -5,12 +5,13 @@ class LocationsController < ApplicationController
       @cat_true = false;
 
       if params.dig(:location, :categories) != nil && params[:location][:categories] 
-        query_string = []
+        query_string = ""
         @cat_checked = params[:location][:categories].reject(&:blank?)
         @cat_checked.each do |cat|
-          query_string << "'#{cat}'=ANY(categories)"
+          query_string << "'#{cat}'=ANY(categories)" << " AND "
         end
-        query_string.join(" AND ")
+        query_string = query_string[0...-4]
+        puts(query_string)
         @locations = @locations.where(query_string)
         @cat_true = true
       end

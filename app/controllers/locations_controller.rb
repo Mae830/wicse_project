@@ -11,13 +11,12 @@ class LocationsController < ApplicationController
           query_string << "'#{cat}'=ANY(categories)" << " AND "
         end
         query_string = query_string[0...-4]
-        puts(query_string)
         @locations = @locations.where(query_string)
         @cat_true = true
       end
 
       if params[:search_by_name] && params[:search_by_name] != ""
-        @locations = @locations.where(name: "#{params[:search_by_name]}")
+        @locations = @locations.where("name ILIKE ?", "%#{params[:search_by_name]}%")
         @cat_true = false
       end
     end

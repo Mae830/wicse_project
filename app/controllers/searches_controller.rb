@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class SearchesController < ApplicationController
   def index
     @locations = Location.all
   end

@@ -46,7 +46,7 @@
   
     <div>
       <%= form.label "Categories" %><br>
-      <%= form.collection_check_boxes(:categories, { 'Restaurant': 'restaurant', 'Dessert': 'dessert', 'Group Activity': 'group activity', 'Nature': 'nature', 'Park': 'park', 'Fun': 'fun', 'Arcade': 'arcade', 'Date Night': 'date night', 'Adventure': 'adventure', 'Family': 'family', 'Movie': 'movie', 'Alternative': 'alternative'}, :last, :first )%>
+      <%= form.collection_check_boxes(:categories, Location::CATEGORIES, :last, :first )%>
     </div>
   
     <div>

@@ -1,4 +1,53 @@
 <h1>Location</h1>
+
+<button id="cats_button">Search by categories</button>
+<button id="loc_button">Search by location name</button>
+
+<div id="cats">
+  <%= form_tag "/locations", method: "GET" do %>
+    <%= collection_check_boxes(:location, :categories, Location::CATEGORIES, :last, :first ) do |b| %>
+      <% if @cat_checked != nil && @cat_checked.include?(b.value) %>
+        <%= b.label { b.check_box(checked: true) + b.text } %>
+      <% else %>
+        <%= b.label { b.check_box(checked: false) + b.text } %>
+      <% end %>
+    <% end%>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
+
+<div id="loc">
+  <%= form_tag "/locations", method: "GET" do %>
+    <%= text_field_tag :search_by_name, params[:search_by_name] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
+
+
+
+<script type="text/javascript">
+  var cat_true = <%= @cat_true %>;
+  console.log(cat_true);
+
+  if (cat_true) {
+    $('#loc').hide();
+    $('#cats_button').hide();
+  } else{
+   $('#cats').hide();
+   $('#loc_button').hide();
+  }
+
+  $('#cats_button').click(function (){
+    $('#cats, #loc').toggle();
+    $('#loc_button, #cats_button').toggle();
+  });
+  $('#loc_button').click(function (){
+    $('#cats, #loc').toggle();
+    $('#loc_button, #cats_button').toggle();
+  });
+</script>
+
+
 <ul>
   <% @locations.each do |location| %>
     <li>

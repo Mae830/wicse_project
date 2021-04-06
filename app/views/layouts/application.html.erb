@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<%= stylesheet_link_tag "my_style" %>
 <html>
+<div id="back">
   <head>
     <title>WicseProject</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -19,22 +21,24 @@
     }, 2000);
   })
   </script>
-  <header class="navbar  navbar-inverse">
-    <div class="navbar-class">
-      <div class="container">
-        <ul class="nav navbar-nav">
+  <nav class="navbar navbar-expand-lg border" id="myNav">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <%= current_user.email %>
-              <li><%= link_to 'Profile', edit_user_registration_path %></li>
-              <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+            <li class="nav-item"><%= link_to 'Profile', edit_user_registration_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
         <% else %>
-          <li><%= link_to 'Log In', new_user_session_path %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li class="nav-item"><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
         <% end %>
-        </ul>
-        </div>
-      </div>
-    </nav>
+      </ul>
+    </div>
+  </nav>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
@@ -42,6 +46,7 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= yield %>
+  </body>
   </body>
 </html>
 

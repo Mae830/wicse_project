@@ -1,3 +1,9 @@
+<div class="container">
+<div class="row">
+<div class= "col-3">
+</div>
+<div class= "col-6">
+
 <h1>Location</h1>
 
 <button id="cats_button">Search by categories</button>
@@ -47,15 +53,23 @@
   });
 </script>
 
+<table class="table">
+  <tbody>
+    <% @locations.each do |location| %>
+    <tr class="card border">
+      <td>
+        <a href="/locations/<%=location.id %>" >
+          <%= location.name %>
+        </a>  
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
 
-<ul>
-  <% @locations.each do |location| %>
-    <li>
-      <a href="/locations/<%=location.id %>">
-        <%= location.name %>
-      </a>
-    </li>
-  <% end %>
-</ul>
+<div class= "col-3">
+</div>
 
-<p>Find me in app/views/locations/index.html.erb</p>
+</div>
+</div>

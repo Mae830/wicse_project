@@ -1,3 +1,8 @@
+<%= stylesheet_link_tag "my_style" %>
+<div class="container">
+<div class="row">
+<div class="col border card"> 
+
 <h1><%= @location.name %></h1>
 <h2><%= @location.street1 + ", " + @location.city + ", " + @location.state + " " + @location.zip %></h2>
 <% @location.categories.each do |c| %>
@@ -35,16 +40,25 @@
     <%= render 'comments/form' %>
     
 <% end %>
+</div>
+<div class="col"> 
+</div>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="col border card"> 
 <h2>Comments</h2>
 <% @location.comments.each do |comment| %>
+    <div class="col border card"> 
     <% if comment.user %>
     <p>
-        <strong>Commenter:</strong>
-        <%= comment.user.name%>
+        <strong>
+            <%= comment.user.name%>
+        </strong>
     </p>
-
     <p>
-        <strong>Comment:</strong>
         <%= comment.body %>
     </p>
         <% if user_signed_in? %>
@@ -55,4 +69,8 @@
             <% end %>
         <% end %>
     <% end %>
+    </div>
 <% end %>
+</div>
+</div>
+</div>

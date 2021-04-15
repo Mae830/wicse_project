@@ -3,6 +3,7 @@
 <div class="row">
 <div class="col border card"> 
 
+
 <h1><%= @location.name %></h1>
 <h2><%= @location.street1 + ", " + @location.city + ", " + @location.state + " " + @location.zip %></h2>
 <% @location.categories.each do |c| %>
@@ -13,35 +14,27 @@
     <div>
         <% @location.user_id %>
         <% if @location.user_id == current_user.id %>
-            <header>Would you like to delete this location?</header>
             <%= link_to location_path(@location), method: "delete" do %>
-                <button>delete</button>
+                <span class="iconify" data-icon="bi:trash-fill" data-inline="false"></span>
             <% end %>
-            <header>Would you like to edit this location?</header>
             <%= link_to edit_location_path(@location), method: "get" do %>
-                <button>edit</button>
+                <span class="iconify" data-icon="zmdi-edit" data-inline="false"></span>
             <% end %>
         <% else %>
         <% end %>
-    </div>
-    <div>
         <% if @favorite == nil %>
-            <header>Would you like to add this location to your favorites?</header>
             <%= link_to "/favorites/#{@location.id}", method: "post" do %>
-                <button>yes</button>
+                <span class="iconify" data-icon="carbon:favorite" data-inline="false"></span>
             <% end %>
         <% else %>  
-            <header>Remove this location from favorites</header>
             <%= link_to "/favorites/#{@favorite.id}", method: "delete" do %>
-                <button>delete</button>
+                <span class="iconify" data-icon="carbon:favorite-filled" data-inline="false"></span>
             <% end %>
         <% end %>
     </div>
     <%= render 'comments/form' %>
     
 <% end %>
-</div>
-<div class="col"> 
 </div>
 </div>
 </div>

@@ -6,30 +6,34 @@
 
 <h1>Location</h1>
 
-<button id="cats_button">Search by categories</button>
-<button id="loc_button">Search by location name</button>
 
-<div id="cats">
+<div id="cats" class="mb-3 form-check form-check-inline">
   <%= form_tag "/locations", method: "GET" do %>
     <%= collection_check_boxes(:location, :categories, Location::CATEGORIES, :last, :first ) do |b| %>
       <% if @cat_checked != nil && @cat_checked.include?(b.value) %>
-        <%= b.label { b.check_box(checked: true) + b.text } %>
+        <%= b.label(class: "form-check-label") { b.check_box(checked: true, class: "form-check-input") + b.text } %>
       <% else %>
-        <%= b.label { b.check_box(checked: false) + b.text } %>
+        <%= b.label(class: "form-check-label") { b.check_box(checked: false, class:"form-check-input") + b.text } %>
       <% end %>
     <% end%>
-    <%= submit_tag "Search" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
 </div>
+
 
 <div id="loc">
   <%= form_tag "/locations", method: "GET" do %>
-    <%= text_field_tag :search_by_name, params[:search_by_name] %>
-    <%= submit_tag "Search" %>
+    <div class="input-group" id="search_bar">
+    <%= text_field_tag :search_by_name, params[:search_by_name], class: "form-control" %>
+    <div class="input-group-button">
+    <%=button_tag "Search", class: "btn btn-primary" %>
+    </div>
+    </div>
   <% end %>
 </div>
 
-
+<button id="cats_button" class= "btn btn-secondary">Search by categories</button>
+<button id="loc_button" class= "btn btn-secondary">Search by location name</button>
 
 <script type="text/javascript">
   var cat_true = <%= @cat_true %>;

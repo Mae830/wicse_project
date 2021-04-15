@@ -16,7 +16,7 @@ class LocationsController < ApplicationController
       end
 
       if params[:search_by_name] && params[:search_by_name] != ""
-        @locations = @locations.where("name ILIKE ?", "%#{params[:search_by_name]}%")
+        @locations = @locations.where("name ILIKE ? or zip = ? ", "%#{params[:search_by_name]}%","#{params[:search_by_name]}")
         @cat_true = false
       end
     end

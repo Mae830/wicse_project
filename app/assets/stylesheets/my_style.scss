@@ -1,26 +1,21 @@
-html,#back{
+html, #back{
   height: 100%;
   background-color: #F5F5F5;
   font-family:'Times New Roman', Times, serif;
 }
-
-nav {
-  background-color: gray;
+#nav_style{
   margin-bottom: 50px;
 }
-
-.nav-link{
-  color:lightcoral;
+nav {
+  background-color: rgb(129, 40, 129);
 }
 
-.navbar-brand{
-  color: black;
-}
 
-nav.navbar-toggler{
-  color: black;
-}
 
 .card{
   max-width: 50cm;
+}
+
+#web_name{
+  color: white
 }

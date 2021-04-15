@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <%= stylesheet_link_tag "my_style" %>
 <html>
-<div id="back">
   <head>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <title>WicseProject</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -11,42 +11,54 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    
   </head>
+  <div id="back">
+    <body>
+    <div id="nav_style">
+    </script>
+    <nav class="navbar navbar-expand-lg border navbar-dark" id="myNav">
+      <a class="navbar-brand"><%= link_to 'Spot It!', root_path, class: "nav-link", id:'web_name' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon", id="toggle_hamburger"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item", id:"link_one" %></li>
+              </ul>
+            </li>
+            <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
 
-  <body>
   <script type="text/javascript">
-  $(document).ready(function(){
-    setTimeout(function(){
-    $('.alert').fadeOut();
-    }, 2000);
+    $(document).ready(function(){
+      setTimeout(function(){
+      $('.alert').fadeOut();
+      }, 2000);
   })
   </script>
-  <nav class="navbar navbar-expand-lg border" id="myNav">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <% if user_signed_in? %>
-            <li class="nav-item"><%= link_to 'Profile', edit_user_registration_path, class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-        <% else %>
-          <li class="nav-item"><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
-    <% if notice %>
+  <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <%= yield %>
-  </body>
-  </body>
+    </div>
+      <%= yield %>
+    </body>
+  </div>
 </html>
 
 

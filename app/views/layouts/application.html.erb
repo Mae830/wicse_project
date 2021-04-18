@@ -25,14 +25,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <% if user_signed_in? %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Profile
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item", id:"link_one" %></li>
-              </ul>
-            </li>
+            <li class="nav-item"><%= link_to 'Profile', edit_user_registration_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Favorites', favorites_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
           <% else %>
             <li class="nav-item"><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>

@@ -1,3 +1,10 @@
+<%= stylesheet_link_tag "my_style" %>
+<div class="container">
+<div class="row">
+<div class="col-sm"> 
+</div>
+
+<div class="col-sm-5 border card">
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -27,8 +34,16 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "btn btn-primary" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+
+
+<div class="col-sm">
+</div>
+
+</div>
+</div>

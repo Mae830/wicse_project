@@ -34,6 +34,9 @@ gem 'devise'
 #JQuery
 gem 'jquery-rails'
 
+#JQuery-Ui
+gem 'jquery-ui-rails'
+
 #Fuzzily
 gem 'fuzzily'
 

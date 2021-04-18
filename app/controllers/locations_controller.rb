@@ -20,6 +20,11 @@ class LocationsController < ApplicationController
         @cat_true = false
       end
     end
+    def trending
+      @locations = Location.order(favorites_count: :desc)
+      @cat_true = false;
+      render :index
+    end
     def show
       @location = Location.find(params[:id])
       if user_signed_in?

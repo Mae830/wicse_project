@@ -13,7 +13,10 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-// List of Dependencies
-require("jquery")
 
+//= require jquery
+//= require jquery_ui
+//= require popper
+//= require bootstrap
+//= require_tree . 
 

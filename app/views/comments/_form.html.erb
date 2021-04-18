@@ -1,9 +1,9 @@
 <%= form_with model: [ @location, @location.comments.build ] do |form| %>
-    <p>
-      <%= form.label :comments %><br>
-      <%= form.text_area :body %>
-    </p>
-    <p>
+    <div class="field mb-3" >
+      <%= form.label :comments, class: "form-label" %><br>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
+    <div>
       <%= form.submit %>
-    </p>
+    </div>
   <% end %>

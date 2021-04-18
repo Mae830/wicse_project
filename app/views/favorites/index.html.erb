@@ -1,12 +1,32 @@
-<h1>Favorites#index</h1>
-<ul>
-  <% @favorites.each do |favorite| %>
-    <li>
-      <a href="/locations/<%=favorite.location_id %>">
-        <%= favorite.location.name %>
-      </a>
-    </li>
-  <% end %>
-</ul>
+<%= stylesheet_link_tag "my_style" %>
 
-<p>Find me in app/views/favorites/index.html.erb</p>
+<div class="container">
+<div class="row">
+<div class= "col-3">
+</div>
+<div class= "col-6">
+
+
+<h1>Favorites!</h1>
+
+<table class="table">
+  <tbody>
+    <% @favorites.each do |favorite| %>
+    <tr class="card border">
+      <td>
+        <a href="/locations/<%=favorite.location_id %>" >
+          <%= favorite.location.name %>
+        </a>  
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+
+<div class= "col-3">
+</div>
+
+</div>
+</div>

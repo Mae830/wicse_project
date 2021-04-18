@@ -3,53 +3,53 @@
 
 
 <%= form_with model: location do |form| %>
-  <div>
-    <%= form.label "Name" %><br>
-    <%= form.text_field :name %>
+  <div class="field mb-3">
+    <%= form.label "Name", class: "form-label" %><br>
+    <%= form.text_field :name, class: "form-control" %>
     <% @location.errors.full_messages_for(:name).each do |message| %>
         <div><%= message %></div>
       <% end %>
   </div>
 
-  <div>
-    <%= form.label "Street 1"%><br>
-    <%= form.text_area :street1 %>
+  <div class="field mb-3">
+    <%= form.label "Street 1", class: "form-label" %><br>
+    <%= form.text_area :street1, class: "form-control" %>
     <% @location.errors.full_messages_for(:street1).each do |message| %>
         <div><%= message %></div>
       <% end %>
   </div>
 
-  <div>
-    <%= form.label "Street 2"%><br>
-    <%= form.text_area :street2%>
+  <div class="field mb-3">
+    <%= form.label "Street 2", class: "form-label" %><br>
+    <%= form.text_area :street2, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label "City"%><br>
-    <%= form.text_area :city%>
+  <div class="field mb-3">
+    <%= form.label "City", class: "form-label" %><br>
+    <%= form.text_area :city, class: "form-control" %>
     <% @location.errors.full_messages_for(:city).each do |message| %>
         <div><%= message %></div>
       <% end %>
   </div>
 
-  <div>
-    <%= form.label "State"%><br>
-    <%= form.text_area :state %>
+  <div class="field mb-3">
+    <%= form.label "State", class: "form-label" %><br>
+    <%= form.text_area :state, class: "form-control" %>
     <% @location.errors.full_messages_for(:state).each do |message| %>
         <div><%= message %></div>
       <% end %>
   </div>
 
-  <div>
-    <%= form.label "Zip"%><br>
-    <%= form.text_area :zip%>
+  <div class="field mb-3">
+    <%= form.label "Zip", class: "form-label" %><br>
+    <%= form.text_area :zip, class: "form-control" %>
     <% @location.errors.full_messages_for(:zip).each do |message| %>
         <div><%= message %></div>
       <% end %>
   </div>
 
-  <div>
-    <%= form.label "Categories" %><br>
+  <div class="field mb-3">
+    <%= form.label "Categories", class: "form-label" %><br>
     <%= form.collection_check_boxes(:categories, Location::CATEGORIES, :last, :first )%>
   </div>
 

@@ -57,7 +57,7 @@
         <% if user_signed_in? %>
             <% if current_user.id == comment.user_id %>
                 <%= link_to "/locations/#{@location.user_id}/comments/#{comment.id}", method: "delete" do %>
-                <button>delete</button>
+                <span class="iconify" data-icon="bi:trash-fill" data-inline="false"></span>
                 <% end %>
             <% end %>
         <% end %>

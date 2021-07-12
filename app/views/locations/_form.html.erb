@@ -48,14 +48,15 @@
       <% end %>
   </div>
 
-  <div class="field mb-3">
+  <div class="field mb-3 ">
     <%= form.label "Categories", class: "form-label" %><br>
-    <%= form.collection_check_boxes(:categories, Location::CATEGORIES, :last, :first )%>
+    <%= form.collection_check_boxes(:categories, Location::CATEGORIES, :last, :first ) %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Edit Location", class: "btn btn-primary" %>
+    <%= form.submit button_text, class: "btn btn-primary" %>
   </div>
 <% end %>
+
 
   

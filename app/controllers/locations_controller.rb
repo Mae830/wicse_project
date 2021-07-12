@@ -3,12 +3,15 @@ class LocationsController < ApplicationController
     def index
       @locations = Location.all
       @cat_true = false;
+      @title = "Locations"
 
-      if params.dig(:location, :categories) != nil && params[:location][:categories] 
+      if params.dig(:location, :categories) != nil && params[:location][:categories]
         query_string = ""
         @cat_checked = params[:location][:categories].reject(&:blank?)
-        @cat_checked.each do |cat|
-          query_string << "'#{cat}'=ANY(categories)" << " AND "
+        if params[:location][:categories]
+          @cat_checked.each do |cat|
+            query_string << "'#{cat}'=ANY(categories)" << " AND "
+          end
         end
         query_string = query_string[0...-4]
         @locations = @locations.where(query_string)
@@ -21,9 +24,27 @@ class LocationsController < ApplicationController
       end
     end
     def trending
-      @locations = Location.order(favorites_count: :desc)
-      @cat_true = false;
-      render :index
+      @locations = Location.order(favorites_count: :desc).limit(8)
+      @cat_true = false
+      @title = "Trending"
+      
+      if params.dig(:location, :categories) != nil && params[:location][:categories]
+        query_string = ""
+        @cat_checked = params[:location][:categories].reject(&:blank?)
+        if params[:location][:categories]
+          @cat_checked.each do |cat|
+            query_string << "'#{cat}'=ANY(categories)" << " AND "
+          end
+        end
+        query_string = query_string[0...-4]
+        @locations = @locations.where(query_string)
+        @cat_true = true
+      end
+
+      if params[:search_by_name] && params[:search_by_name] != ""
+        @locations = @locations.where("name ILIKE ? or zip = ? ", "%#{params[:search_by_name]}%","#{params[:search_by_name]}")
+        @cat_true = false
+      end
     end
     def show
       @location = Location.find(params[:id])

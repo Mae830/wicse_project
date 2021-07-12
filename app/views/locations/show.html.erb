@@ -6,8 +6,20 @@
 
 <h1><%= @location.name %></h1>
 <h2><%= @location.street1 + ", " + @location.city + ", " + @location.state + " " + @location.zip %></h2>
+<% if @location.favorites_count == 0 %>
+    <% if user_signed_in? %>
+        <%= "Be the First to like this Site!" %><br>
+    <% else %>
+        <%= "This site does not have any likes yet." %><br>
+    <% end %>
+<% elsif @location.favorites_count == 1 %>
+    <%= @location.favorites_count.to_s + " person liked this location!" %><br>
+<% else %>
+    <%= @location.favorites_count.to_s + " people liked this location!" %><br>
+<% end %>
 <% @location.categories.each do |c| %>
-<h3><%= c.capitalize %></h3>
+
+<%= c.capitalize %>
 <% end %>
 
 <% if user_signed_in? %>

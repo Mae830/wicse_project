@@ -3,7 +3,7 @@
       <%= form.label :comments, class: "form-label" %><br>
       <%= form.text_area :body, class: "form-control" %>
     </div>
-    <div>
-      <%= form.submit %>
+    <div class="actions">
+      <%= form.submit "Create Comment", class: "btn btn-primary" %>
     </div>
   <% end %>

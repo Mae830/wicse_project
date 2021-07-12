@@ -4,7 +4,7 @@
 </div>
 <div class= "col-6">
 
-<h1>Location</h1>
+<h1><%=@title%></h1>
 
 
 <div id="cats" class="mb-3 form-check form-check-inline">
@@ -16,7 +16,8 @@
         <%= b.label(class: "form-check-label") { b.check_box(checked: false, class:"form-check-input") + b.text } %>
       <% end %>
     <% end%>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <br>
+    <%= submit_tag 'search', class: "btn btn-primary"%>
   <% end %>
 </div>
 
@@ -33,7 +34,7 @@
 </div>
 
 <button id="cats_button" class= "btn btn-secondary">Search by categories</button>
-<button id="loc_button" class= "btn btn-secondary">Search by location name</button>
+<button id="loc_button" class= "btn btn-secondary">Search by name/zip</button>
 
 <script type="text/javascript">
   var cat_true = <%= @cat_true %>;

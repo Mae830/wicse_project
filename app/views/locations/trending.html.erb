@@ -1,0 +1,80 @@
+<div class="container">
+<div class="row">
+<div class= "col-3">
+</div>
+<div class= "col-6">
+
+<h1><%=@title%></h1>
+
+
+<div id="cats" class="mb-3 form-check form-check-inline">
+  <%= form_tag "/locations", method: "GET" do %>
+    <%= collection_check_boxes(:location, :categories, Location::CATEGORIES, :last, :first ) do |b| %>
+      <% if @cat_checked != nil && @cat_checked.include?(b.value) %>
+        <%= b.label(class: "form-check-label") { b.check_box(checked: true, class: "form-check-input") + b.text } %>
+      <% else %>
+        <%= b.label(class: "form-check-label") { b.check_box(checked: false, class:"form-check-input") + b.text } %>
+      <% end %>
+    <% end%>
+    <br>
+    <%= submit_tag 'search', class: "btn btn-primary"%>
+  <% end %>
+</div>
+
+
+<div id="loc">
+  <%= form_tag "/locations", method: "GET" do %>
+    <div class="input-group" id="search_bar">
+    <%= text_field_tag :search_by_name, params[:search_by_name], class: "form-control" %>
+    <div class="input-group-button">
+    <%=button_tag "Search", class: "btn btn-primary" %>
+    </div>
+    </div>
+  <% end %>
+</div>
+
+<button id="cats_button" class= "btn btn-secondary">Search by categories</button>
+<button id="loc_button" class= "btn btn-secondary">Search by name/zip</button>
+
+<script type="text/javascript">
+  var cat_true = <%= @cat_true %>;
+  console.log(cat_true);
+
+  if (cat_true) {
+    $('#loc').hide();
+    $('#cats_button').hide();
+  } else{
+   $('#cats').hide();
+   $('#loc_button').hide();
+  }
+
+  $('#cats_button').click(function (){
+    $('#cats, #loc').toggle();
+    $('#loc_button, #cats_button').toggle();
+  });
+  $('#loc_button').click(function (){
+    $('#cats, #loc').toggle();
+    $('#loc_button, #cats_button').toggle();
+  });
+</script>
+
+<table class="table">
+  <tbody>
+    <% @locations.each do |location| %>
+    <tr class="card border">
+      <td>
+        <a href="/locations/<%=location.id %>" >
+          <%= location.name %>
+        </a>  
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<div class= "col-3">
+</div>
+
+</div>
+</div>
